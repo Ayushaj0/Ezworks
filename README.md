@@ -9,14 +9,23 @@ Currently, two official plugins are available:
 
 ## API Testing with Postman
 
-1. Import the Postman collection from `postman/EzWorks_API_Tests.postman_collection.json`
-2. The collection includes tests for:
+1. Import both files from the `postman` directory:
+   - `EzWorks_API_Tests.postman_collection.json` (Test Collection)
+   - `EzWorks.postman_environment.json` (Environment Variables)
+2. Select the "EzWorks Environment" from the environment dropdown
+3. The collection includes tests for:
    - Valid email submission
    - Invalid email format
    - Restricted domain (@ez.works)
    - Empty email submission
-3. Run the collection to execute all tests
-4. View test results in the Postman Test Results tab
+   - 404 Not Found handling
+4. Run the collection to execute all tests
+5. View test results in the Postman Test Results tab
+
+If you encounter 404 errors:
+- Verify the API endpoint is correct in the environment variables
+- Check if the API server is running
+- Ensure network connectivity to the API server
 
 ## Expanding the ESLint configuration
 

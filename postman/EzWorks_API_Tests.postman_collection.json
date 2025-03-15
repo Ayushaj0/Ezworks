@@ -19,9 +19,9 @@
               }
             ],
             "url": {
-              "raw": "https://test.ezworks.ai/api/validate-email",
-              "host": ["test", "ezworks", "ai"],
-              "path": ["api", "validate-email"]
+              "raw": "{{baseUrl}}/validate-email",
+              "host": ["{{baseUrl}}"],
+              "path": ["validate-email"]
             },
             "body": {
               "mode": "raw",
@@ -59,9 +59,9 @@
               }
             ],
             "url": {
-              "raw": "https://test.ezworks.ai/api/validate-email",
-              "host": ["test", "ezworks", "ai"],
-              "path": ["api", "validate-email"]
+              "raw": "{{baseUrl}}/validate-email",
+              "host": ["{{baseUrl}}"],
+              "path": ["validate-email"]
             },
             "body": {
               "mode": "raw",
@@ -98,9 +98,9 @@
               }
             ],
             "url": {
-              "raw": "https://test.ezworks.ai/api/validate-email",
-              "host": ["test", "ezworks", "ai"],
-              "path": ["api", "validate-email"]
+              "raw": "{{baseUrl}}/validate-email",
+              "host": ["{{baseUrl}}"],
+              "path": ["validate-email"]
             },
             "body": {
               "mode": "raw",
@@ -137,9 +137,9 @@
               }
             ],
             "url": {
-              "raw": "https://test.ezworks.ai/api/validate-email",
-              "host": ["test", "ezworks", "ai"],
-              "path": ["api", "validate-email"]
+              "raw": "{{baseUrl}}/validate-email",
+              "host": ["{{baseUrl}}"],
+              "path": ["validate-email"]
             },
             "body": {
               "mode": "raw",
@@ -164,8 +164,67 @@
               }
             }
           ]
+        },
+        {
+          "name": "404 Not Found Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/invalid-endpoint",
+              "host": ["{{baseUrl}}"],
+              "path": ["invalid-endpoint"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"test@example.com\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Not Found error message\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.error).to.eql(\"Requested resource could not be found\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "if (!pm.environment.get('baseUrl')) {",
+              "    pm.environment.set('baseUrl', 'https://test.ezworks.ai/api');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
         }
       ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://test.ezworks.ai/api",
+      "type": "string"
     }
   ]
 }
