@@ -1,0 +1,322 @@
+/* General Styles */
+:root {
+  --primary-color: #3e369e;
+  --primary-color-hover: #2c267d;
+  --background-gradient: linear-gradient(135deg, #f5f7fa, #e4e8eb);
+  --text-color: #213547;
+  --btn-hover-color: #e65c00;
+  
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  background-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
+  padding: 20px;
+}
+
+/* Left Section (Header) */
+.header {
+  width: 40%;
+  text-align: left;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 60px;
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 10px 0;
+  color: var(--primary-color);
+}
+
+.header p {
+  max-width: 500px;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+/* Improved Textarea */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;  /* Increased to accommodate error/success message */
+}
+
+.search-textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: white;
+  color: #213547;
+}
+
+.search-textarea:focus {
+  border-color: #c56b12;
+  box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+  outline: none;
+}
+
+/* Form Validation Styles */
+.search-textarea.error {
+  border-color: #ff4444;
+  background-color: #fff8f8;
+}
+
+.search-textarea.success {
+  border-color: #4CAF50;
+  background-color: #f8fff8;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.success-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: #4CAF50;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* Search Icon */
+.search-icon {
+  position: absolute;
+  right: 15px;
+  color: #ca9494;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+/* Improved Email Button */
+.contact-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #3e369e, #5745db);
+  color: white;
+  border: none;
+  border-radius: 50px; /* Fully rounded corners */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contact-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Hover Effect */
+.contact-btn:hover {
+  background: linear-gradient(135deg, #5745db, #6b57ff);
+  transform: scale(1.05);
+  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 720px) {
+  .email-service {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .email-box input {
+    width: 100%;
+  }
+
+  .contact-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Right Section (Services) */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 55%;
+}
+
+/* Service Card */
+.service-card {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  text-align: left;
+  transition: 0.3s;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--primary-color-hover);
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  flex-grow: 1;
+}
+
+/* RESPONSIVENESS */
+
+/* ✅ iPad Pro (2732x2048) */
+@media (max-width: 2732px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ✅ MacBook (1440x823) */
+@media (max-width: 1440px) {
+  .container {
+    max-width: 85%;
+  }
+
+  .header {
+    width: 45%;
+  }
+
+  .services {
+    width: 50%;
+  }
+}
+
+/* ✅ Standard 1080p Screens */
+@media (max-width: 1080px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    width: 80%;
+    text-align: center;
+  }
+
+  .services {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* ✅ 720p (Tablets & Small Laptops) */
+@media (max-width: 720px) {
+  .header {
+    width: 100%;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .email-service {
+    flex-direction: column;
+  }
+
+  .email-box input,
+  .contact-btn {
+    width: 100%;
+  }
+}
+
+/* ✅ 480p (Mobile View) */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .header {
+    width: 100%;
+    text-align: center;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 15px;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+}
